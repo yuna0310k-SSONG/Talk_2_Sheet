@@ -10,8 +10,8 @@ export default function Footer() {
             className="text-[#3FAF8E] hover:text-[#359A7D] hover:underline"
           >
             Yuna.k
-          </a>
-          {" "}(yuna0310.k@gmail.com)
+          </a>{" "}
+          (yuna0310.k@gmail.com)
         </p>
       </div>
     </footer>
