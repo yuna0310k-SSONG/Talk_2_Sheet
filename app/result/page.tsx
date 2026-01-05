@@ -8,9 +8,9 @@ import {
   convertMessagesToCSV,
 } from "@/lib/convert/excel";
 import { convertMessagesToPDF } from "@/lib/convert/pdf";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 
-export default function ResultPage() {
+function ResultContent() {
   const searchParams = useSearchParams();
   const jobId = searchParams.get("jobId");
   const { messages, options } = useConvertStore();
@@ -203,5 +203,20 @@ export default function ResultPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto max-w-2xl px-4 py-12 sm:py-20">
+        <div className="text-center">
+          <div className="mb-4 text-2xl">⏳</div>
+          <p className="text-gray-600">로딩 중...</p>
+        </div>
+      </div>
+    }>
+      <ResultContent />
+    </Suspense>
   );
 }
